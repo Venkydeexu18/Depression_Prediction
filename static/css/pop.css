@@ -1,0 +1,112 @@
+.btn {
+    height: 40px;
+    background: orange;
+    border: none;
+    color: white;
+    font-family: sans-serif;
+    font-weight: bolder;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.btn:hover {
+    background-color: transparent;
+    border: 2px solid orange;
+    color: orange;
+}
+
+.bg {
+    width: 100%;
+    height: 100vh;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.72);
+    top: 0;
+    left: 0;
+    position: absolute;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.midSec {
+    width: 60%;
+    height: 55%;
+    display: grid;
+    position: relative;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgb(0 0 0 / 28%);
+    grid-template-columns: 0.4fr 0.6fr;
+}
+
+.sec1 {
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    flex-direction: column;
+
+}
+
+.sec1 .img {
+    height: 100%;
+    width: auto;
+}
+
+.sec2 {
+    padding: 10px 20px;
+}
+
+.sec2 .title {
+    font-weight: bolder;
+    font-size: 27px;
+    color: black;
+}
+
+.st {
+    display: block;
+    font-size: 25px;
+    margin: 5px 0;
+    font-weight: bolder;
+}
+
+.sec2 .sub {
+    font-size: 20px;
+    margin: 20px 0;
+    line-height: 140%;
+}
+
+.hide {
+    display: none;
+}
+
+.close {
+    width: 55px;
+    height: 55px;
+    border-radius: 10%;
+    background-color: rgb(226, 226, 226);
+    position: absolute;
+    z-index: 11;
+    right: -20px;
+    top: -20px;
+    font-size: 25px;
+    cursor: pointer;
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (max-width: 600px) {
+    .midSec{
+        grid-template-columns: auto;
+        height: max-content;
+    }
+    .sec1 .img{
+        display: none;
+    }
+}

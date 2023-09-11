@@ -1,0 +1,269 @@
+<!-- VenkyDeexu18 -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Questions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sail&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/ionicons@5.5.3/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    .navbar {
+      display: flex;
+      justify-content: flex-end;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      padding: 10px;
+    }
+
+    .navbar ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 10px;
+    }
+
+    .navbar li {
+      display: inline;
+      font-family: 'Poppins', sans-serif;
+      margin-left: 10px;
+      padding-left: 30px;
+      position: relative;
+      transition: top 0.2s;
+    }
+
+    .navbar li:hover {
+      top: -5px;
+    }
+
+    .navbar a {
+      color: #000;
+      text-decoration: none;
+      font-size: 20px;
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+    }
+
+    @media screen and (max-width: 600px) {
+      .navbar li:not(:first-child) {
+        display: none;
+      }
+
+      .navbar li.icon {
+        display: inline;
+        float: right;
+      }
+
+      .navbar.responsive {
+        position: relative;
+      }
+
+      .navbar.responsive .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+
+      .navbar.responsive li {
+        display: block;
+        text-align: left;
+        margin: 10px 0;
+      }
+    }
+    
+    body {
+      background-image: url("../static/UI\ for\ depression\ detector.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    .background-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+    }
+    
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    .question-box {
+      width: 500px;
+      background-color: #fff;
+      box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+      border: 1px solid #000;
+      border-radius: 10px;
+      padding: 20px 20px 10px 20px;
+      margin-bottom: 120px;
+    }
+
+    .question {
+      font-family: 'Poppins', serif;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .text-box-container {
+      font-family: 'Poppins', serif;
+      position: relative;
+    }
+
+    .text-box {
+      font-family: 'Poppins', serif;
+      width: 96%;
+      border: 1px solid #000;
+      border-radius: 5px;
+      padding: 10px;
+      padding-right: 10px;
+    }
+
+    .submit-icon {
+      position: absolute;
+      top: 60%;
+      right: 10px;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #000;
+    }
+
+    .options {
+      font-family: 'Poppins', serif;
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .option {
+      font-family: 'Poppins', serif;
+      flex-basis: 24%;
+      margin-bottom: 5px;
+    }
+
+    .option button {
+      font-family: 'Poppins', serif;
+      width: 100%;
+      border: 1px solid #000;
+      border-radius: 5px;
+      padding: 10px;
+      background-color: transparent;
+      color: #000;
+      cursor: pointer;
+    }
+
+    .option button:hover {
+      background-color: orange;
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .result {
+      font-family: 'Poppins', serif;
+      font-size: 24px;
+      margin-top: 20px;
+    }
+
+    .submit-icon {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      width: 20px;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="navbar" id="myNavbar">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/predict">Predict</a></li>
+      <li><a href="/contact">Contact Us</a></li>
+      <li class="icon">
+        <a href="javascript:void(0);" onclick="toggleNavbar()">&#9776;</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="container">
+    <div class="question-box">
+      <form method="post" action="/predict">
+        <div class="question">
+          <div class="question-text">{{ question.question }}</div>
+          <!-- <div class="text-box-container">
+            <input type="text" class="text-box" name="selected_option" readonly>
+            <span class="submit-icon" onclick="submitForm()"><ion-icon name="send"></ion-icon></span>
+          </div> -->
+
+          <div class="text-box-container">
+            <input type="text" class="text-box" name="selected_option" readonly>
+            <img src="../static/send.svg" alt="Submit" class="submit-icon" onclick="submitForm()">
+          </div>
+
+
+        </div>
+        <div class="options">
+          {% for option in question.options %}
+          <div class="option">
+            <button type="button" onclick="selectOption('{{ option.option }}')">{{ option.option }}</button>
+          </div>
+          {% endfor %}
+        </div>
+        <input type="hidden" name="question_index" value="{{ question_index }}">
+        <input type="hidden" name="answer" class="selected-option" value="">
+      </form>
+      <div class="result">
+        {% if result %}
+          {{ result }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleNavbar() {
+      var navbar = document.getElementById("myNavbar");
+      if (navbar.className === "navbar") {
+        navbar.className += " responsive";
+      } else {
+        navbar.className = "navbar";
+      }
+    }
+
+    function selectOption(option) {
+      var selectedOption = document.querySelector('.selected-option');
+      selectedOption.value = option;
+      var textBox = document.querySelector('.text-box');
+      textBox.value = option;
+    }
+    
+    function submitForm() {
+      var selectedOption = document.querySelector('.selected-option').value;
+      if (selectedOption) {
+        var form = document.querySelector('form');
+        form.submit();
+      } else {
+        alert("Please select an option before proceeding.");
+      }
+    }
+  </script>
+</body>
+</html>

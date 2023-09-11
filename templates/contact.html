@@ -1,0 +1,196 @@
+<!-- VenkyDeexu18 -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact Us</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    .navbar {
+      display: flex;
+      justify-content: flex-end;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      padding: 10px;
+    }
+
+    .navbar ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 10px;
+    }
+
+    .navbar li {
+      display: inline;
+      font-family: 'Poppins', sans-serif;
+      margin-left: 10px;
+      padding-left: 30px;
+      position: relative;
+      transition: top 0.2s;
+    }
+
+    .navbar li:hover {
+      top: -5px;
+    }
+
+    .navbar a {
+      color: #000;
+      text-decoration: none;
+      font-size: 20px;
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 95%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: none;
+    }
+
+    .submit-btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      background-color: #FF9421;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .submit-btn:hover {
+      background-color: #fff;
+      color: black;
+      border: 1px solid #000;
+    }
+    @media screen and (max-width: 600px) {
+      .navbar li:not(:first-child) {
+        display: none;
+      }
+
+      .navbar li.icon {
+        display: inline;
+        float: right;
+      }
+
+      .navbar.responsive {
+        position: relative;
+      }
+
+      .navbar.responsive .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+
+      .navbar.responsive li {
+        display: block;
+        text-align: left;
+        margin: 10px 0;
+      }
+    }
+    body {
+      background-image: url("../static/UI\ for\ depression\ detector.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%; 
+    }
+
+    .background-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body>
+    <div class="navbar" id="myNavbar">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/predict">Predict</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+          <li class="icon">
+            <a href="javascript:void(0);" onclick="toggleNavbar()">&#9776;</a>
+          </li>
+        </ul>
+      </div>
+      <br><br><br><br><br>
+  <div class="container">
+    <h2>Contact Us</h2>
+    <form>
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+  </div>
+<script>
+  function toggleNavbar() {
+    var navbar = document.getElementById("myNavbar");
+    if (navbar.className === "navbar") {
+      navbar.className += " responsive";
+    } else {
+      navbar.className = "navbar";
+    }
+  }
+</script>
+</body>
+</html>
